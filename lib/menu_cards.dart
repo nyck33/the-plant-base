@@ -1,9 +1,14 @@
+import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-import 'constants.dart';
+import 'package:layout/enums/my_enums.dart';
+import 'constants/constants.dart';
 
 class MenuCards extends StatelessWidget{
-  const MenuCards({super.key});
+
+  final List<String> myItems;
+  MenuCards({super.key, this.myItems=menuItems});
 
   @override
   Widget build(BuildContext context){
@@ -13,17 +18,21 @@ class MenuCards extends StatelessWidget{
         crossAxisSpacing: 20.0,
         crossAxisCount: 4,
         children: [
-          for (var m in menuItems)Card(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  m,
-                  textAlign: TextAlign.center,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ],
+          for (var m in myItems)GestureDetector(
+            onTap: () => context.go
+              (slash + m),
+            child: Card(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    m,
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
@@ -50,7 +59,6 @@ Column _buildButtonColumn(Color color, IconData icon, String label) {
         ),
       ),
     ],
-
   );
 }
 

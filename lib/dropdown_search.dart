@@ -1,6 +1,6 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import 'constants/constants.dart';
 
 class DropdownSearch extends StatelessWidget {
   const DropdownSearch({super.key});

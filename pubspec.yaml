@@ -13,6 +13,7 @@ dependencies:
   dropdown_search: ^5.0.3
   dio: ^4.0.6
   go_router: ^5.1.5
+  enum_to_string: ^2.0.1
 
 dev_dependencies:
   flutter_test:

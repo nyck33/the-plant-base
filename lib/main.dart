@@ -1,71 +1,64 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:enum_to_string/enum_to_string.dart';
+import 'package:layout/menu_items_pages/curries/details/korma.dart';
 
+//pages
+import 'homescreen.dart';
+import 'menu_items_pages/curries/curries.dart';
+import 'menu_items_pages/italian/italian.dart';
 
+//utilities
+import 'enums/my_enums.dart';
 import 'menu_cards.dart';
 import 'snackbar_page.dart';
 import 'dropdown_search.dart';
+import 'constants/constants.dart';
 
 // Uncomment lines 3 and 6 to view the visual layout at runtime.
 // import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
 void main() {
   //debugPaintSizeEnabled = true;
-  runApp(const PlantBaseApp());
+  runApp(PlantBaseApp());
 }
 
-class PlantBaseApp extends StatefulWidget {
-  const PlantBaseApp({super.key});
+class PlantBaseApp extends StatelessWidget {
+  PlantBaseApp({Key? key}) : super(key: key);
+
+  static const String title = "The Plant Base";
+
   @override
-  State<PlantBaseApp> createState() => _PlantBaseAppState();
-}
-class _PlantBaseAppState extends State<PlantBaseApp> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'The Plant Base',
-      home: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: const Text('The Plant Base'),
-        ),
-        body: Column(
-            children: const [
-              MenuCards(),
-              DropdownSearch(),
-              SnackBarPage(),
-            ],
-        ),
-        drawer: Drawer(
-          child:ListView(
-            padding: EdgeInsets.zero, //remove padding
-            children:[
-              const DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                ),
-                child:Text('PB Goodies'),
-              ),
-              ListTile(
-                title: const Text('Sweets'),
-                onTap:(){
-                  //update state and close drawer
-                  Navigator.pop(context);
-                }
-              ),
-              ListTile(
-                title: const Text('Beverages'),
-                onTap:(){
-                  //update the state of the app
-                  //close drawer
-                  Navigator.pop(context);
-                },
-              ),
-            ],
+  Widget build(BuildContext context) => MaterialApp.router(
+      routerConfig: _router,
+      title: title,
+  );
+
+  final GoRouter _router = GoRouter(
+    routes: <GoRoute>[
+      GoRoute(
+        path: '/',
+        builder: (BuildContext context, GoRouterState state) =>
+        const HomeScreen(),
+        routes: <GoRoute>[
+          GoRoute(
+            path: (EnumToString.convertToString(MyPage.curries)),
+            builder: (BuildContext context, GoRouterState state) =>
+            const CurriesPage(),
           ),
-        ),
+          GoRoute(
+            path: (EnumToString.convertToString(MyPage.italian)),
+            builder: (BuildContext context, GoRouterState state) =>
+            const ItalianPage(),
+          ),
+          GoRoute(
+            path: (EnumToString.convertToString(Curries.pbKorma)),
+            builder: (BuildContext context, GoRouterState state) =>
+                const KormaPage(),
+          )
+        ],
       ),
-    );
-  }
+    ],
+  );
 }
 
