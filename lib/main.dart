@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:enum_to_string/enum_to_string.dart';
 import 'package:layout/menu_items_pages/curries/details/korma.dart';
 
 //pages
 import 'homescreen.dart';
 import 'menu_items_pages/curries/curries.dart';
 import 'menu_items_pages/italian/italian.dart';
+import 'menu_items_pages/curries/details/korma.dart';
 
 //utilities
 import 'enums/my_enums.dart';
@@ -17,7 +17,6 @@ import 'constants/constants.dart';
 
 // Uncomment lines 3 and 6 to view the visual layout at runtime.
 // import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
-
 void main() {
   //debugPaintSizeEnabled = true;
   runApp(PlantBaseApp());
@@ -42,20 +41,28 @@ class PlantBaseApp extends StatelessWidget {
         const HomeScreen(),
         routes: <GoRoute>[
           GoRoute(
-            path: (EnumToString.convertToString(MyPage.curries)),
+            //path: (EnumToString.convertToString(MyPage.curries)),
+            path: 'pbCurries',
             builder: (BuildContext context, GoRouterState state) =>
             const CurriesPage(),
-          ),
-          GoRoute(
-            path: (EnumToString.convertToString(MyPage.italian)),
-            builder: (BuildContext context, GoRouterState state) =>
-            const ItalianPage(),
-          ),
-          GoRoute(
-            path: (EnumToString.convertToString(Curries.pbKorma)),
-            builder: (BuildContext context, GoRouterState state) =>
+            /*
+            routes: <GoRoute>[
+              GoRoute(
+                path: 'pbKorma',
+                builder: (BuildContext context, GoRouterState state) =>
                 const KormaPage(),
-          )
+              ),
+
+
+            ],
+
+             */
+          ),
+          GoRoute(
+            path: 'pbKorma',
+            builder: (BuildContext context, GoRouterState state) =>
+            const KormaPage(),
+          ),
         ],
       ),
     ],

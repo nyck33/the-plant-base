@@ -16,7 +16,15 @@ class CurriesPage extends StatelessWidget{
         centerTitle: true,
         title: const Text("Curries"),
       ),
-      body: MenuCards(myItems: curries)
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+              child: MenuCards(myItems: curries)
+          ),
+        ],
+      ),
     );
   }
 

@@ -24,7 +24,7 @@ class HomeScreen extends StatelessWidget {
     ),
     body: Column(
         children:  [
-          MenuCards(),
+          MenuCards(myItems: menuItems),
           const DropdownSearch(),
           const SnackBarPage(),
         ],

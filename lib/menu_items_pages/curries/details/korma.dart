@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
 import 'package:flutter/cupertino.dart';
 import '../../../constants/constants.dart';
 import '/menu_cards.dart';
-
 
 class KormaPage extends StatelessWidget{
   const KormaPage({Key? key}) : super(key: key);
@@ -16,18 +14,15 @@ class KormaPage extends StatelessWidget{
           centerTitle: true,
           title: const Text("Korma Curry"),
         ),
-        body: Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: const [
-              Text(
-                'pb Korma is gooooooood',
-              )
-            ],
-          ),
-        )
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: const [
+            Expanded(
+              child: Text('pb Korma is good'),
+            ),
+          ],
+        ),
     );
   }
-
 }

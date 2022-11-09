@@ -19,8 +19,9 @@ class MenuCards extends StatelessWidget{
         crossAxisCount: 4,
         children: [
           for (var m in myItems)GestureDetector(
-            onTap: () => context.go
-              (slash + m),
+            onTap: () =>
+                context.go
+                  (slash + m),
             child: Card(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
